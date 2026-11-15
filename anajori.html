@@ -2,931 +2,404 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Anajori Development Society is a non-profit organization working for community development, health awareness, women empowerment, education, agriculture and sustainable livelihoods in Assam.">
-  <meta name="theme-color" content="#174c38">
-  <title>Anajori Development Society | Empowering Communities</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --green: #174c38;
-      --green-dark: #103829;
-      --green-light: #eaf3ed;
-      --orange: #e69a42;
-      --text: #26352d;
-      --muted: #68766e;
-      --white: #ffffff;
-      --bg: #f8faf7;
-      --border: #e5ebe5;
-      --shadow: 0 12px 35px rgba(20, 55, 38, .09);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      color: var(--text);
-      background: var(--white);
-      line-height: 1.7;
-    }
-
-    a { text-decoration: none; color: inherit; }
-    img { display: block; max-width: 100%; }
-
-    .container {
-      width: min(1160px, 90%);
-      margin: auto;
-    }
-
-    .topbar {
-      background: var(--green-dark);
-      color: #e8f1eb;
-      font-size: 13px;
-      padding: 9px 0;
-    }
-
-    .topbar .container {
-      display: flex;
-      justify-content: space-between;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    .navbar {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(255,255,255,.97);
-      border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(12px);
-    }
-
-    .nav-inner {
-      min-height: 82px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 25px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      min-width: 0;
-    }
-
-    .brand-logo {
-      width: 53px;
-      height: 53px;
-      border-radius: 50%;
-      background: var(--green);
-      color: white;
-      display: grid;
-      place-items: center;
-      font-family: Georgia, serif;
-      font-size: 25px;
-      font-weight: bold;
-      border: 3px solid #e4efe7;
-      flex-shrink: 0;
-    }
-
-    .brand-name {
-      color: var(--green);
-      font-weight: 700;
-      font-size: 17px;
-      line-height: 1.25;
-    }
-
-    .brand-tagline {
-      color: var(--muted);
-      font-size: 11px;
-      letter-spacing: 1.4px;
-      text-transform: uppercase;
-      margin-top: 4px;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 25px;
-      list-style: none;
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    .nav-links a:hover { color: var(--orange); }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 13px 23px;
-      border-radius: 5px;
-      background: var(--orange);
-      color: #192a20;
-      font-size: 14px;
-      font-weight: 700;
-      transition: .25s;
-      border: 0;
-      cursor: pointer;
-    }
-
-    .btn:hover {
-      background: #f0ad5b;
-      transform: translateY(-2px);
-    }
-
-    .btn-green {
-      background: var(--green);
-      color: white;
-    }
-
-    .btn-green:hover { background: var(--green-dark); }
-
-    .menu-toggle {
-      display: none;
-      border: 0;
-      background: transparent;
-      font-size: 28px;
-      color: var(--green);
-      cursor: pointer;
-    }
-
-    /* Hero */
-
-    .hero {
-      min-height: 620px;
-      display: flex;
-      align-items: center;
-      color: white;
-      background:
-        linear-gradient(90deg, rgba(10,42,29,.88), rgba(10,42,29,.54)),
-        url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=2000&q=85')
-        center/cover no-repeat;
-    }
-
-    .hero-content {
-      max-width: 720px;
-      padding: 105px 0;
-    }
-
-    .eyebrow {
-      color: var(--orange);
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 17px;
-    }
-
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(42px, 6vw, 68px);
-      line-height: 1.12;
-      margin-bottom: 23px;
-    }
-
-    .hero p {
-      max-width: 620px;
-      font-size: 17px;
-      color: #e9f1eb;
-      margin-bottom: 32px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 13px;
-    }
-
-    .btn-outline {
-      border: 1px solid rgba(255,255,255,.75);
-      color: white;
-      padding: 12px 23px;
-      border-radius: 5px;
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    .btn-outline:hover { background: white; color: var(--green); }
-
-    /* Common sections */
-
-    section { padding: 90px 0; }
-
-    .section-heading {
-      max-width: 680px;
-      margin: 0 auto 45px;
-      text-align: center;
-    }
-
-    .section-heading .eyebrow { margin-bottom: 10px; }
-
-    .section-heading h2 {
-      font-family: 'Playfair Display', serif;
-      color: var(--green);
-      font-size: clamp(30px, 4vw, 43px);
-      line-height: 1.2;
-      margin-bottom: 14px;
-    }
-
-    .section-heading p { color: var(--muted); }
-
-    /* Intro */
-
-    .intro-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 65px;
-      align-items: center;
-    }
-
-    .intro-image {
-      position: relative;
-    }
-
-    .intro-image img {
-      width: 100%;
-      height: 440px;
-      object-fit: cover;
-      border-radius: 8px;
-    }
-
-    .image-label {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      background: white;
-      padding: 17px 22px;
-      border-left: 4px solid var(--orange);
-      box-shadow: var(--shadow);
-    }
-
-    .image-label strong {
-      color: var(--green);
-      display: block;
-      font-size: 21px;
-    }
-
-    .image-label span {
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .intro-content .eyebrow { color: #b87828; }
-
-    .intro-content h2 {
-      font-family: 'Playfair Display', serif;
-      color: var(--green);
-      font-size: 39px;
-      line-height: 1.2;
-      margin-bottom: 20px;
-    }
-
-    .intro-content p {
-      color: var(--muted);
-      margin-bottom: 16px;
-    }
-
-    .check-list {
-      list-style: none;
-      margin: 22px 0 28px;
-    }
-
-    .check-list li {
-      margin: 10px 0;
-      font-weight: 600;
-    }
-
-    .check-list li::before {
-      content: "✓";
-      color: #39845a;
-      font-weight: 700;
-      margin-right: 12px;
-    }
-
-    /* Focus areas */
-
-    .focus-section { background: var(--bg); }
-
-    .focus-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 23px;
-    }
-
-    .focus-card {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 30px;
-      transition: .25s;
-    }
-
-    .focus-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow);
-      border-color: #c5d8ca;
-    }
-
-    .focus-icon {
-      width: 55px;
-      height: 55px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      background: var(--green-light);
-      font-size: 26px;
-      margin-bottom: 20px;
-    }
-
-    .focus-card h3 {
-      color: var(--green);
-      font-size: 19px;
-      margin-bottom: 11px;
-    }
-
-    .focus-card p {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    /* Projects */
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-
-    .project-card {
-      border-radius: 8px;
-      overflow: hidden;
-      background: white;
-      box-shadow: var(--shadow);
-    }
-
-    .project-card img {
-      height: 230px;
-      width: 100%;
-      object-fit: cover;
-      transition: transform .5s;
-    }
-
-    .project-card:hover img { transform: scale(1.05); }
-
-    .project-image { overflow: hidden; }
-
-    .project-info { padding: 24px; }
-
-    .project-info .category {
-      color: #b87828;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1.3px;
-      text-transform: uppercase;
-    }
-
-    .project-info h3 {
-      color: var(--green);
-      font-size: 19px;
-      margin: 8px 0;
-    }
-
-    .project-info p {
-      color: var(--muted);
-      font-size: 14px;
-      margin-bottom: 15px;
-    }
-
-    .read-more {
-      color: var(--green);
-      font-weight: 700;
-      font-size: 13px;
-    }
-
-    .read-more:hover { color: var(--orange); }
-
-    /* Mission banner */
-
-    .mission {
-      background: var(--green);
-      color: white;
-      text-align: center;
-      padding: 75px 0;
-    }
-
-    .mission h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(30px, 4vw, 43px);
-      margin-bottom: 17px;
-    }
-
-    .mission p {
-      max-width: 750px;
-      margin: 0 auto 27px;
-      color: #dce9df;
-    }
-
-    /* CTA */
-
-    .cta {
-      background: var(--green-light);
-      text-align: center;
-    }
-
-    .cta h2 {
-      color: var(--green);
-      font-family: 'Playfair Display', serif;
-      font-size: 38px;
-      margin-bottom: 15px;
-    }
-
-    .cta p {
-      max-width: 650px;
-      color: var(--muted);
-      margin: 0 auto 25px;
-    }
-
-    /* Footer */
-
-    footer {
-      background: #102e23;
-      color: #dce8df;
-      padding: 65px 0 20px;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr 1fr;
-      gap: 50px;
-      padding-bottom: 45px;
-    }
-
-    footer h3 {
-      color: white;
-      font-size: 17px;
-      margin-bottom: 20px;
-    }
-
-    footer p, footer li {
-      color: #b9cbbf;
-      font-size: 14px;
-      margin-bottom: 10px;
-    }
-
-    footer ul { list-style: none; }
-
-    footer a:hover { color: var(--orange); }
-
-    .footer-brand {
-      color: white;
-      font-family: 'Playfair Display', serif;
-      font-size: 24px;
-      margin-bottom: 12px;
-    }
-
-    .copyright {
-      border-top: 1px solid rgba(255,255,255,.13);
-      padding-top: 20px;
-      text-align: center;
-      color: #a9bcb0;
-      font-size: 12px;
-    }
-
-    /* Responsive */
-
-    @media (max-width: 900px) {
-      .nav-links {
-        gap: 15px;
-        font-size: 13px;
-      }
-
-      .nav-cta { display: none; }
-
-      .intro-grid { gap: 35px; }
-      .focus-grid, .projects-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    @media (max-width: 700px) {
-      .topbar .container { justify-content: center; text-align: center; }
-
-      .nav-inner { min-height: 72px; }
-
-      .menu-toggle { display: block; }
-
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 72px;
-        left: 0;
-        width: 100%;
-        background: white;
-        padding: 22px 5%;
-        border-top: 1px solid var(--border);
-        box-shadow: var(--shadow);
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 18px;
-      }
-
-      .nav-links.active { display: flex; }
-
-      .hero { min-height: 570px; }
-      .hero-content { padding: 80px 0; }
-      .hero p { font-size: 15px; }
-
-      section { padding: 65px 0; }
-
-      .intro-grid { grid-template-columns: 1fr; }
-      .intro-image img { height: 330px; }
-      .intro-content h2 { font-size: 32px; }
-
-      .focus-grid, .projects-grid { grid-template-columns: 1fr; }
-
-      .footer-grid { grid-template-columns: 1fr; gap: 30px; }
-
-      .cta h2 { font-size: 31px; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Anajori Development Society, Nalbari, Assam. Working in human and animal health, agriculture, rural development, education and community awareness.">
+<title>Anajori Development Society | Blaze to Empower Life</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green:#174a35;
+  --dark:#103626;
+  --gold:#e6a348;
+  --cream:#f5f8f3;
+  --text:#29372e;
+  --muted:#68766e;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;color:var(--text);line-height:1.7}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+.container{width:min(1160px,90%);margin:auto}
+.topbar{background:var(--dark);color:#fff;padding:9px 0;font-size:12px}
+.topbar .container{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+header{position:sticky;top:0;z-index:100;background:white;border-bottom:1px solid #e5ebe5}
+.nav{height:82px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{width:58px;height:58px;object-fit:contain}
+.brand strong{display:block;color:var(--green);font-size:17px;line-height:1.3}
+.brand small{color:var(--muted);font-size:11px;letter-spacing:1.5px;text-transform:uppercase}
+nav{display:flex;align-items:center;gap:22px;font-size:13px;font-weight:700}
+nav a:hover{color:#bd7c2e}
+.donate,.btn{background:var(--gold);color:#1b2b20;padding:12px 20px;border-radius:4px;font-weight:700;display:inline-block}
+#menuBtn{display:none;background:none;border:0;font-size:27px;color:var(--green)}
+.hero{
+ min-height:590px;display:flex;align-items:center;color:white;
+ background:linear-gradient(90deg,rgba(7,37,23,.88),rgba(7,37,23,.35)),
+ url('https://anajoridevelopmentsociety.org.in/wp-content/uploads/2025/06/image-56.png') center/cover;
+}
+.hero-content{max-width:740px;padding:90px 0}
+.eyebrow{color:var(--gold);font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase}
+.hero h1{font:700 clamp(42px,6vw,68px)/1.12 'Playfair Display',serif;margin:17px 0}
+.hero p{font-size:17px;color:#e8eee9;max-width:650px;margin-bottom:28px}
+.actions{display:flex;gap:13px;flex-wrap:wrap}
+.outline{border:1px solid white;color:white;padding:11px 20px;border-radius:4px}
+section{padding:82px 0}
+.heading{text-align:center;max-width:720px;margin:0 auto 42px}
+.heading h2,.about h2,.vision h2,.cta h2{
+ font:700 clamp(30px,4vw,43px)/1.2 'Playfair Display',serif;
+ color:var(--green);margin:9px 0 15px
+}
+.heading p,.muted{color:var(--muted)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}
+.about-image{position:relative}
+.about-image img{width:100%;height:440px;object-fit:cover;border-radius:7px}
+.image-note{position:absolute;bottom:18px;left:18px;background:white;padding:14px 18px;border-left:4px solid var(--gold)}
+.image-note strong{display:block;color:var(--green)}
+.about p{color:var(--muted);margin:14px 0}
+.light{background:var(--cream)}
+.focus-grid,.project-grid,.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.focus-card{background:white;padding:26px;border:1px solid #e5ebe5;border-radius:6px}
+.focus-card .icon{font-size:28px}
+.focus-card h3{color:var(--green);margin:8px 0;font-size:18px}
+.focus-card p,.project p{font-size:14px;color:var(--muted)}
+.project{border:1px solid #e5ebe5;border-radius:7px;overflow:hidden;box-shadow:0 8px 25px #173d2810}
+.project img{width:100%;height:225px;object-fit:cover}
+.project-content{padding:21px}
+.tag{color:#b7792d;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+.project h3{font-size:18px;line-height:1.4;color:var(--green);margin:8px 0}
+.project p{margin-bottom:13px}
+.read{font-size:13px;font-weight:700;color:var(--green)}
+.vision{background:var(--green);color:white;text-align:center}
+.vision h2{color:white}
+.vision p{max-width:780px;margin:0 auto 22px;color:#e0eae2}
+.person{text-align:center;background:var(--cream);padding:25px;border-radius:7px}
+.person img{width:145px;height:145px;border-radius:50%;object-fit:cover;margin:0 auto 15px;border:5px solid white}
+.person h3{color:var(--green);font-size:18px}
+.person p{font-size:13px;color:var(--muted)}
+.cta{background:#edf3ed;text-align:center}
+.cta p{max-width:720px;margin:0 auto 24px;color:var(--muted)}
+footer{background:#102e23;color:#dce8df;padding:55px 0 18px}
+.footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:40px;padding-bottom:35px}
+footer h3{color:white;margin-bottom:14px}
+footer p,footer li{font-size:13px;color:#bdcfc2;margin:7px 0}
+footer ul{list-style:none}
+footer a:hover{color:var(--gold)}
+.copyright{border-top:1px solid #ffffff22;text-align:center;padding-top:17px;font-size:12px;color:#aabdb0}
+@media(max-width:850px){
+ nav{gap:12px;font-size:12px}
+ .focus-grid,.project-grid,.team-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:680px){
+ .topbar .container{justify-content:center;text-align:center}
+ .nav{height:72px}
+ .brand img{width:48px;height:48px}
+ .brand strong{font-size:14px}
+ #menuBtn{display:block}
+ nav{display:none;position:absolute;top:72px;left:0;right:0;background:white;padding:22px 5%;box-shadow:0 12px 20px #0001;align-items:flex-start;flex-direction:column}
+ nav.open{display:flex}
+ .hero{min-height:520px}
+ .hero-content{padding:70px 0}
+ .hero p{font-size:15px}
+ section{padding:62px 0}
+ .about-grid{grid-template-columns:1fr;gap:30px}
+ .about-image img{height:320px}
+ .focus-grid,.project-grid,.team-grid,.footer-grid{grid-template-columns:1fr}
+}
+</style>
 </head>
 
 <body>
 
-  <!-- Top bar -->
-  <div class="topbar">
-    <div class="container">
-      <span>📍 Nalbari, Assam, India</span>
-      <span>✉ anajoridevelopmentsociety@gmail.com &nbsp; | &nbsp; ☎ +91 96780 07273</span>
-    </div>
+<div class="topbar">
+ <div class="container">
+  <span>📍 Ward No. 4, Milanpur, Jail Road, Nalbari, Assam – 781337</span>
+  <span>☎ +91 9678007273 | ✉ anajoridevelopmentsociety@gmail.com</span>
+ </div>
+</div>
+
+<header>
+ <div class="container nav">
+  <a href="#home" class="brand">
+   <img src="https://anajoridevelopmentsociety.org.in/wp-content/uploads/2023/11/bosa-charity-img19.png" alt="Anajori Development Society logo">
+   <span>
+    <strong>Anajori Development Society</strong>
+    <small>Blaze to empower life</small>
+   </span>
+  </a>
+
+  <button id="menuBtn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+
+  <nav id="mainMenu">
+   <a href="#home">HOME</a>
+   <a href="#about">ABOUT US</a>
+   <a href="#focus">OUR WORK</a>
+   <a href="#activities">ACTIVITIES</a>
+   <a href="#team">OUR TEAM</a>
+   <a href="#contact">CONTACT</a>
+   <a class="donate" href="https://anajoridevelopmentsociety.org.in/donate/">DONATE</a>
+  </nav>
+ </div>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+ <div class="container">
+  <div class="hero-content">
+   <div class="eyebrow">Anajori Development Society · Nalbari, Assam</div>
+   <h1>Blaze to Empower Life</h1>
+   <p>
+    Working for better human and animal health, rural awareness
+    and agricultural development towards healthier communities
+    and socio-economic transformation.
+   </p>
+   <div class="actions">
+    <a class="btn" href="#about">Discover Our Society</a>
+    <a class="outline" href="#activities">Explore Our Activities →</a>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="about">
+ <div class="container about-grid">
+  <div class="about-image">
+   <img src="https://anajoridevelopmentsociety.org.in/wp-content/uploads/2023/11/history-759x1024.jpg" alt="Anajori Development Society programme">
+   <div class="image-note">
+    <strong>Established in 2015</strong>
+    <span class="muted">Registered on 13 November 2015</span>
+   </div>
   </div>
 
-  <!-- Navigation -->
-  <header class="navbar">
-    <div class="container nav-inner">
+  <div class="about">
+   <div class="eyebrow">Know About Us</div>
+   <h2>Working for Healthier and Stronger Communities</h2>
+   <p>
+    Anajori Development Society is a non-governmental organisation
+    formed to support underprivileged communities and create
+    awareness among rural people.
+   </p>
+   <p>
+    The Society works in human and animal health, awareness
+    programmes and agriculture. Its activities include free
+    veterinary vaccination camps, veterinary extension awareness,
+    animal health awareness, scientific poultry and pig farming,
+    zoonotic disease prevention, wildlife conservation and
+    scientific dairy farming.
+   </p>
+   <p>
+    The organisation was formed on 16 September 2015 following
+    a general meeting held at Kalafakirtola LP School and was
+    registered on 13 November 2015 under the Societies
+    Registration Act, 1860.
+   </p>
+   <a class="btn" href="https://anajoridevelopmentsociety.org.in/about-us/">Read More About Us</a>
+  </div>
+ </div>
+</section>
 
-      <a href="#" class="brand">
-        <div class="brand-logo">A</div>
-        <div>
-          <div class="brand-name">Anajori Development Society</div>
-          <div class="brand-tagline">Blaze to empower life</div>
-        </div>
-      </a>
+<section class="light" id="focus">
+ <div class="container">
+  <div class="heading">
+   <div class="eyebrow">Our Areas of Work</div>
+   <h2>What We Work For</h2>
+   <p>Our published mission focuses on accessible healthcare, awareness, scientific farming, education and skill development.</p>
+  </div>
 
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+  <div class="focus-grid">
+   <article class="focus-card">
+    <div class="icon">🩺</div>
+    <h3>Human Health</h3>
+    <p>Awareness on chronic disease management, prevention of communicable diseases, and women and child health.</p>
+   </article>
+   <article class="focus-card">
+    <div class="icon">🐐</div>
+    <h3>Animal Health</h3>
+    <p>Veterinary vaccination camps, animal health awareness and veterinary extension programmes.</p>
+   </article>
+   <article class="focus-card">
+    <div class="icon">🌾</div>
+    <h3>Agriculture & Livelihood</h3>
+    <p>Scientific awareness on profitable farming practices for goats, pigs, cattle, poultry and dairy.</p>
+   </article>
+   <article class="focus-card">
+    <div class="icon">👩‍🌾</div>
+    <h3>Women & Child Development</h3>
+    <p>Promoting women and child health education and livelihood-related opportunities.</p>
+   </article>
+   <article class="focus-card">
+    <div class="icon">💻</div>
+    <h3>Education & Skills</h3>
+    <p>Supporting right to education, higher and technical education for girls, computer education and skill development.</p>
+   </article>
+   <article class="focus-card">
+    <div class="icon">🌳</div>
+    <h3>Environment & Wildlife</h3>
+    <p>Promoting awareness about forest and wildlife conservation and responsible community participation.</p>
+   </article>
+  </div>
+ </div>
+</section>
 
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About Us</a></li>
-        <li><a href="#focus">Our Focus</a></li>
-        <li><a href="#projects">Our Work</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+<section id="activities">
+ <div class="container">
+  <div class="heading">
+   <div class="eyebrow">News & Activities</div>
+   <h2>Our Work in the Community</h2>
+   <p>Selected activities and projects published on the Society's official website.</p>
+  </div>
 
-      <a href="https://anajoridevelopmentsociety.in/donate/" class="btn nav-cta">Support Us</a>
+  <div class="project-grid">
 
+   <article class="project">
+    <img src="https://anajoridevelopmentsociety.org.in/wp-content/uploads/2025/06/image-56.png" alt="Scientific goat rearing training programme">
+    <div class="project-content">
+     <div class="tag">Livestock Development</div>
+     <h3>Scientific Goat Rearing Training at Barkhanajan</h3>
+     <p>Training and awareness programme under the ICAR-AICRP goat improvement project, with technical guidance from veterinary experts.</p>
+     <a class="read" href="https://anajoridevelopmentsociety.org.in/training-awareness-programme-on-scientific-goat-rearing-held-at-barkhanajan-village/">Read Activity →</a>
     </div>
-  </header>
+   </article>
 
-  <main>
-
-    <!-- Hero -->
-    <section class="hero" id="home">
-      <div class="container">
-        <div class="hero-content">
-          <div class="eyebrow">Together for a better tomorrow</div>
-          <h1>Empowering Communities. Transforming Lives.</h1>
-          <p>
-            Building healthier, stronger and more sustainable communities
-            through education, healthcare, women empowerment and rural development.
-          </p>
-          <div class="hero-actions">
-            <a href="#about" class="btn">Discover Our Mission</a>
-            <a href="https://anajoridevelopmentsociety.in/donate/" class="btn-outline">Support Our Work →</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section id="about">
-      <div class="container intro-grid">
-
-        <div class="intro-image">
-          <img
-            src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=1000&q=85"
-            alt="Community development and volunteer work">
-          <div class="image-label">
-            <strong>Since 2015</strong>
-            <span>Working towards community development</span>
-          </div>
-        </div>
-
-        <div class="intro-content">
-          <div class="eyebrow">Who We Are</div>
-          <h2>Creating Opportunities for a Better Society</h2>
-
-          <p>
-            Anajori Development Society is a non-profit organisation
-            established with a commitment to social welfare and sustainable
-            community development.
-          </p>
-
-          <p>
-            Since its establishment in 2015, the organisation has been
-            working to improve the quality of life of people through
-            community-based initiatives in health, education, agriculture,
-            livelihoods and women empowerment.
-          </p>
-
-          <ul class="check-list">
-            <li>Community health and awareness</li>
-            <li>Education and digital learning</li>
-            <li>Women empowerment and livelihood development</li>
-            <li>Sustainable agriculture and animal health</li>
-          </ul>
-
-          <a href="https://anajoridevelopmentsociety.in/about-the-organization/" class="btn btn-green">
-            Learn More About Us
-          </a>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Focus areas -->
-    <section class="focus-section" id="focus">
-      <div class="container">
-
-        <div class="section-heading">
-          <div class="eyebrow">What We Do</div>
-          <h2>Our Areas of Focus</h2>
-          <p>
-            We work across different sectors to create inclusive opportunities
-            and strengthen communities.
-          </p>
-        </div>
-
-        <div class="focus-grid">
-
-          <article class="focus-card">
-            <div class="focus-icon">🏥</div>
-            <h3>Health & Awareness</h3>
-            <p>
-              Promoting public health awareness, disease prevention,
-              maternal and child health, and community health initiatives.
-            </p>
-          </article>
-
-          <article class="focus-card">
-            <div class="focus-icon">🐐</div>
-            <h3>Animal Health & Livelihood</h3>
-            <p>
-              Supporting livestock development, scientific animal rearing,
-              veterinary awareness and sustainable rural livelihoods.
-            </p>
-          </article>
-
-          <article class="focus-card">
-            <div class="focus-icon">👩‍🌾</div>
-            <h3>Women Empowerment</h3>
-            <p>
-              Encouraging women's participation in income-generating
-              activities, entrepreneurship and sustainable farming.
-            </p>
-          </article>
-
-          <article class="focus-card">
-            <div class="focus-icon">📚</div>
-            <h3>Education & Digital Learning</h3>
-            <p>
-              Promoting learning opportunities, computer education,
-              digital literacy and skill development.
-            </p>
-          </article>
-
-          <article class="focus-card">
-            <div class="focus-icon">🌱</div>
-            <h3>Agriculture & Environment</h3>
-            <p>
-              Encouraging sustainable agricultural practices,
-              vermicompost production and environmental awareness.
-            </p>
-          </article>
-
-          <article class="focus-card">
-            <div class="focus-icon">🤝</div>
-            <h3>Community Development</h3>
-            <p>
-              Working with communities and stakeholders to identify
-              local needs and create meaningful social impact.
-            </p>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- Featured projects -->
-    <section id="projects">
-      <div class="container">
-
-        <div class="section-heading">
-          <div class="eyebrow">Our Initiatives</div>
-          <h2>Making a Difference Through Action</h2>
-          <p>
-            Explore some of the initiatives through which we work
-            towards a healthier and more empowered society.
-          </p>
-        </div>
-
-        <div class="projects-grid">
-
-          <article class="project-card">
-            <div class="project-image">
-              <img
-                src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=85"
-                alt="Sustainable farming and rural livelihood">
-            </div>
-            <div class="project-info">
-              <span class="category">Women Empowerment</span>
-              <h3>Scientific Goat Farming & Vermicompost</h3>
-              <p>
-                Supporting women through scientific goat rearing,
-                model farming and vermicompost production initiatives.
-              </p>
-              <a class="read-more" href="https://anajoridevelopmentsociety.in/official-launch-of-vermicompost-production-under-sita-sponsored-women-empowerment-project-at-model-goat-farm/">
-                Read More →
-              </a>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <div class="project-image">
-              <img
-                src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=85"
-                alt="Students participating in digital education">
-            </div>
-            <div class="project-info">
-              <span class="category">Education</span>
-              <h3>Digital Learning & Skill Development</h3>
-              <p>
-                Creating opportunities for learners through computer
-                education and digital learning initiatives.
-              </p>
-              <a class="read-more" href="https://anajoridevelopmentsociety.in/empowering-the-future-through-digital-learning/">
-                Read More →
-              </a>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <div class="project-image">
-              <img
-                src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=85"
-                alt="Healthcare and community awareness">
-            </div>
-            <div class="project-info">
-              <span class="category">Community Health</span>
-              <h3>Community Health & TB Awareness</h3>
-              <p>
-                Raising awareness about tuberculosis, disease prevention
-                and the importance of accessible healthcare.
-              </p>
-              <a class="read-more" href="https://anajoridevelopmentsociety.in/anajori-development-society-continues-its-fight-against-tuberculosis/">
-                Read More →
-              </a>
-            </div>
-          </article>
-
-        </div>
-
-        <div style="text-align:center;margin-top:38px;">
-          <a href="https://anajoridevelopmentsociety.in/category/activitites/" class="btn btn-green">
-            Explore All Activities
-          </a>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Mission -->
-    <section class="mission">
-      <div class="container">
-        <div class="eyebrow">Our Commitment</div>
-        <h2>Blaze to Empower Life</h2>
-        <p>
-          We believe that meaningful development begins with empowered
-          people, stronger communities and equal opportunities.
-          Together, we can build a future where everyone has the
-          opportunity to live with dignity and hope.
-        </p>
-        <a href="#contact" class="btn">Connect With Us</a>
-      </div>
-    </section>
-
-    <!-- Contact CTA -->
-    <section class="cta" id="contact">
-      <div class="container">
-        <div class="eyebrow">Be Part of the Change</div>
-        <h2>Let's Build a Better Tomorrow Together</h2>
-        <p>
-          Join hands with Anajori Development Society. Your support,
-          partnership and participation can help us reach more communities
-          and create lasting change.
-        </p>
-        <a href="mailto:anajoridevelopmentsociety@gmail.com" class="btn btn-green">
-          Get in Touch
-        </a>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-
-      <div class="footer-grid">
-
-        <div>
-          <div class="footer-brand">Anajori Development Society</div>
-          <p>
-            A non-profit organisation committed to community development,
-            health, education, women's empowerment and sustainable livelihoods.
-          </p>
-          <p><strong>Blaze to empower life.</strong></p>
-        </div>
-
-        <div>
-          <h3>Quick Links</h3>
-          <ul>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#focus">Our Focus Areas</a></li>
-            <li><a href="#projects">Our Projects</a></li>
-            <li><a href="https://anajoridevelopmentsociety.in/donate/">Donate</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h3>Contact Information</h3>
-          <ul>
-            <li>Ward No. 4, Milanpur, Jail Road</li>
-            <li>Nalbari, Assam – 781337, India</li>
-            <li>Phone: +91 96780 07273</li>
-            <li>Email: anajoridevelopmentsociety@gmail.com</li>
-            <li>
-              <a href="https://www.facebook.com/anajoridevelopmentsociety/" target="_blank" rel="noopener noreferrer">
-                Facebook Page ↗
-              </a>
-            </li>
-          </ul>
-        </div>
-
-      </div>
-
-      <div class="copyright">
-        © <span id="year"></span> Anajori Development Society. All Rights Reserved.
-      </div>
-
+   <article class="project">
+    <img src="https://anajoridevelopmentsociety.org.in/wp-content/uploads/2025/06/image-42-724x1024.png" alt="Anajori organic vermicompost">
+    <div class="project-content">
+     <div class="tag">Women Empowerment</div>
+     <h3>Vermicompost Production at Model Goat Farm</h3>
+     <p>SITA-sponsored integrated women empowerment initiative combining scientific goat farming and vermicompost production.</p>
+     <a class="read" href="https://anajoridevelopmentsociety.org.in/official-launch-of-vermicompost-production-under-sita-sponsored-women-empowerment-project-at-model-goat-farm/">Read Activity →</a>
     </div>
-  </footer>
+   </article>
 
-  <script>
-    // Mobile navigation
-    const menuToggle = document.getElementById('menuToggle');
-    const navLinks = document.getElementById('navLinks');
+   <article class="project">
+    <img src="https://anajoridevelopmentsociety.org.in/wp-content/uploads/2025/12/image-44-1024x576.png" alt="Nutritional supplement distribution for TB patients">
+    <div class="project-content">
+     <div class="tag">Community Health</div>
+     <h3>Support for Tuberculosis Patients</h3>
+     <p>The Society reports nutritional supplement support and awareness activities for TB patients in Nalbari district.</p>
+     <a class="read" href="https://anajoridevelopmentsociety.org.in/anajori-development-society-continues-its-fight-against-tuberculosis/">Read Activity →</a>
+    </div>
+   </article>
 
-    menuToggle.addEventListener('click', function () {
-      const isOpen = navLinks.classList.toggle('active');
-      menuToggle.setAttribute('aria-expanded', isOpen);
-      menuToggle.textContent = isOpen ? '✕' : '☰';
-    });
+  </div>
+ </div>
+</section>
 
-    // Close menu after selecting a link
-    document.querySelectorAll('.nav-links a').forEach(function(link) {
-      link.addEventListener('click', function() {
-        navLinks.classList.remove('active');
-        menuToggle.setAttribute('aria-expanded', 'false');
-        menuToggle.textContent = '☰';
-      });
-    });
+<section class="vision">
+ <div class="container">
+  <div class="eyebrow">Our Vision & Mission</div>
+  <h2>Care, Knowledge and Opportunity for All</h2>
+  <p>
+   Our vision is to grow as a leading NGO from Assam, inspiring
+   people to realise their potential. Our mission is to improve
+   access to affordable human and animal healthcare, promote
+   disease prevention and awareness, strengthen scientific
+   farming, and expand education and skill development.
+  </p>
+  <a class="btn" href="https://anajoridevelopmentsociety.org.in/vision-mission/">Read Vision & Mission</a>
+ </div>
+</section>
 
-    // Dynamic copyright year
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+<section id="team">
+ <div class="container">
+  <div class="heading">
+   <div class="eyebrow">Governing Body</div>
+   <h2>Meet Our Team</h2>
+   <p>Leadership details published on the Society's official website.</p>
+  </div>
 
+  <div class="team-grid">
+   <article class="person">
+    <img src="https://anajoridevelopmentsociety.org.in/wp-content/uploads/2024/05/Matiur-Rahman.jpeg" alt="Matiur Rahman">
+    <h3>Matiur Rahman</h3>
+    <p>President</p>
+   </article>
+   <article class="person">
+    <img src="https://anajoridevelopmentsociety.org.in/wp-content/uploads/2024/05/Basanta-Baishya.jpeg" alt="Basanta Baishya">
+    <h3>Basanta Baishya</h3>
+    <p>Vice President</p>
+   </article>
+   <article class="person">
+    <img src="https://anajoridevelopmentsociety.org.in/wp-content/uploads/2024/05/Tajimul-Haque.jpeg" alt="Tajimul Haque">
+    <h3>Tajimul Haque</h3>
+    <p>Secretary-cum-Treasurer</p>
+   </article>
+  </div>
+ </div>
+</section>
+
+<section class="cta" id="contact">
+ <div class="container">
+  <div class="eyebrow">Get Involved</div>
+  <h2>Let's Make a Difference Together</h2>
+  <p>
+   Anajori Development Society welcomes development practitioners,
+   thinkers, students and young people interested in contributing
+   to community development. Students interested in rural
+   development internships may contact the Society by email.
+  </p>
+  <div class="actions" style="justify-content:center">
+   <a class="btn" href="mailto:anajoridevelopmentsociety@gmail.com">Contact the Society</a>
+   <a class="btn" href="https://anajoridevelopmentsociety.org.in/donate/">Donate for a Cause</a>
+  </div>
+ </div>
+</section>
+
+</main>
+
+<footer>
+ <div class="container">
+  <div class="footer-grid">
+   <div>
+    <h3>Anajori Development Society</h3>
+    <p>Blaze to empower life.</p>
+    <p>Working in human and animal health, agriculture, rural awareness, education and community development.</p>
+   </div>
+   <div>
+    <h3>Quick Links</h3>
+    <ul>
+     <li><a href="#about">About Us</a></li>
+     <li><a href="#focus">Our Work</a></li>
+     <li><a href="#activities">Activities</a></li>
+     <li><a href="#team">Governing Body</a></li>
+     <li><a href="https://anajoridevelopmentsociety.org.in/donate/">Donate</a></li>
+    </ul>
+   </div>
+   <div>
+    <h3>Registered Office</h3>
+    <p>Ward No. 4, Milanpur, Jail Road<br>Nalbari, Assam – 781337, India</p>
+    <p>Phone: +91 9678007273</p>
+    <p>Email: anajoridevelopmentsociety@gmail.com</p>
+    <p><a href="https://www.facebook.com/anajoridevelopmentsociety/" target="_blank" rel="noopener">Facebook Page ↗</a></p>
+   </div>
+  </div>
+  <div class="copyright">
+   © <span id="year"></span> Anajori Development Society. All Rights Reserved.
+  </div>
+ </div>
+</footer>
+
+<script>
+const menuBtn=document.getElementById('menuBtn');
+const menu=document.getElementById('mainMenu');
+
+menuBtn.addEventListener('click',()=>{
+ const open=menu.classList.toggle('open');
+ menuBtn.setAttribute('aria-expanded',open);
+ menuBtn.textContent=open?'×':'☰';
+});
+
+menu.querySelectorAll('a').forEach(link=>{
+ link.addEventListener('click',()=>{
+  menu.classList.remove('open');
+  menuBtn.setAttribute('aria-expanded','false');
+  menuBtn.textContent='☰';
+ });
+});
+
+document.getElementById('year').textContent=new Date().getFullYear();
+</script>
 </body>
 </html>
